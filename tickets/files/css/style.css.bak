@@ -1,0 +1,168 @@
+/* Estilo Aplicacion Gestion de Incidencias Apuestas de Murcia */
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .busca_check {
+    margin-top: 5%;
+  }
+  #version_escritorio,#div_agrupados,#p_agrupados{
+  	display: none
+  }
+   #version_movil{
+  	display: block;
+  }
+  
+  .nav>li>a>span{
+	  float: right;
+	  margin-left: 2%;
+	  font-size: 22px;
+	}
+	
+	.login-class{
+		margin: 5% 0 !important;
+	}
+}
+
+@media (min-width: 769px) {
+  #version_movil{
+  	display: none;
+  }
+  #version_escritorio,#p_agrupados{
+  	display: block;
+  }
+} 
+
+/* Estilo General */
+
+.logo_a{
+	padding-top: 5px;
+}
+
+.nav>li{
+	height: 50px;
+  text-align: right;
+}
+
+/* LOGIN */
+.div_logo{
+	text-align: center;	
+}
+
+.estilo_propio_logo{
+	width: 40%;
+	margin: 3% 0;
+}
+
+.login-panel{
+	margin: 0 10%;
+}
+
+.login-input{
+	margin: 2% 20%;
+}
+
+.login-cuerpo{
+	text-align: center;
+}
+
+.logo_enlace_main{
+	margin-left: 0 !important;
+}
+
+.navbar-nav li a{
+	color: #fff !important;
+}
+
+/* Nueva incidencia */
+
+.paneles_form{
+	border: none;
+}
+
+.panel-heading{
+	font-weight: bold
+}
+
+.panel-body{
+	border: 1px solid transparent;
+	border-top: 0;
+  border-color: #ddd;
+  padding: 0;
+}
+
+.inputs{
+	padding: 15px;
+}
+
+.input-group{
+	width: 100%
+}
+
+.solucionada{
+	margin-top: 3%;
+}
+
+#solucionada{
+	vertical-align: sub;
+	width: 10%;
+}
+
+.ui-combobox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.ui-combobox-button {
+    display: none;
+}
+
+.ui-autocomplete-input {
+    margin: 0;
+    padding: 0.3em;
+    height: 34px;
+    width: 100%;
+    background: #fff !important;
+}
+
+.col-md-4 {
+    height: 100px;
+}
+
+/* Gestión incidencias */
+
+#ocultar_buscador:hover{
+	background: #f2f6fa;
+}
+
+#tabla_incidencias tr.clickable-row{
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  color: #888;
+  cursor: pointer;
+}
+
+#tabla_incidencias tr.clickable-row:hover{
+	background: #f2f6fa;
+}
+
+.tabla_agrupados tr.clickable-row2{
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  color: #888;
+  cursor: pointer;
+}
+
+.tabla_agrupados tr.clickable-row2:hover{
+	background: #f2f6fa;
+}
+
+.buscador_incidencias{
+	padding: 0;
+  margin-bottom: 2%;
+  float: left;
+}
+
+.tipo_error{
+	vertical-align: sub;
+	width: 10%;
+}

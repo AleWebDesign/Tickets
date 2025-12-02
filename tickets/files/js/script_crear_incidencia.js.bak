@@ -1,0 +1,5 @@
+/* Script nueva_incidencia.php */
+
+$(window).function(){
+	alert('ok');
+});

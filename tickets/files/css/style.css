@@ -1,0 +1,596 @@
+/* Estilo Aplicacion Gestion de Incidencias Apuestas de Murcia */
+
+/* Media Queries */
+@supports (padding-top: constant(safe-area-inset-top)){
+	nav.navbar{
+	    --safe-area-inset-top: constant(safe-area-inset-top);
+		padding-top: constant(safe-area-inset-top);
+	}
+}
+
+@supports (padding-top: env(safe-area-inset-top)){
+	nav.navbar{
+		--safe-area-inset-top: env(safe-area-inset-top);
+		padding-top: env(safe-area-inset-top);
+	}
+}
+
+@media (max-width: 769px) {
+  .busca_check {
+    margin-top: 5%;
+  }
+  #version_escritorio,#div_agrupados,#p_agrupados{
+  	display: none
+  }
+  #version_movil{
+  	display: block;
+  }
+  #nav_user_icon1{
+		margin-left: -15px !important;
+    font-size: 14px !important;
+	}
+	
+	#nav_user_icon2{
+		font-size: 14px !important;
+	    margin-top: 4px !important;
+	    margin-right: 5px !important;
+	    margin-left: 5% !important;
+	}
+  
+  .nav>li>a>span{
+	  float: right;
+	  margin-left: 4%;
+	  font-size: 22px;
+	}
+
+	.nav>li>a>span.badge{
+		float: none !important;
+	}
+
+	.badge{
+		font-size: 12px !important;
+	}
+
+	.login-class{
+		margin: 5% 0 !important;
+	}
+
+	.navbar-header>a>img{
+	  	width: 145px !important;
+	  	float: left !important;
+	}
+  
+  #logo_badge{
+  	display: block !important;
+  	float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+  
+  
+  .logo_a{
+  	width: 80% !important;
+  }
+  
+  #boton_aceptar_buscador_maquinas{
+  	margin: 0 5% !important;
+  }
+  
+  .salones_cajeros{
+  	margin: 5% 0 !important;
+  }
+  
+  table tr th, table tr td{
+		font-size: 12px !important;
+	}
+	
+	.iconos_mantenimiento{
+		width: 100% !important;
+	}
+	
+	#div_deposito{
+		width: 100%;
+		padding: 5% !important;
+	}
+	
+	#gasoil img{
+		width: 20px !important;
+		float: right !important;
+		margin-left: 4% !important;
+	}
+	
+	.nav>li{
+		border-bottom: 1px solid #fff !important;
+	}
+	
+	.nav>li>a{
+		margin-top: 5px !important;
+	}
+	
+	.nav>li:last-child{
+		border-bottom: none !important;
+	}
+	
+	#volver_button{
+		width: 100% !important;
+	}
+	
+	#imagen_error{
+		width: 100%;
+	}
+	
+	#navbar{
+		height: auto;
+    max-height: 500px;
+    overflow-x: hidden;
+	}
+	
+	#div1{
+		padding-bottom: 10% !important;
+	}
+	
+	#gasoil_form{
+		padding-bottom: 10% !important;
+	}
+	
+	#div2{
+		margin-top: 8% !important;
+	}
+	
+	#div3{
+		margin-top: 82% !important;
+	}
+	
+	#div4{
+		padding: 6% 0 !important;
+	}
+	
+	#div5{
+		margin-top: 8% !important;
+	}
+	
+	.check_all_visits,#submit_informes{
+		margin: 5% 0 !important;
+	}
+	
+	.inputs_cajero{
+		width: 50%;
+		float: left;
+	}
+	
+	.aceptar_button{
+		width: 100%;
+	}
+	
+	.testear_div{
+		margin-top: 15px;
+		width: 100%;
+	}
+	
+	.cajero_movil{
+		padding: 0 !important;
+	}
+
+	#div_regiones{
+		display: none;
+	}
+}
+
+@media (min-width: 770px) {
+  #version_movil{
+  	display: none;
+  }
+  #version_escritorio,#p_agrupados{
+  	display: block;
+  }
+  #panel_historial{
+  	float: right
+  }
+  
+  #link_nueva_maquina{
+  	margin-top: 42% !important;
+  }
+  
+  .navbar-header{
+  	width: 132px !important;
+  }
+  
+  .navbar-header>a>img{
+  	width: 100% !important;
+  }
+  
+  #boton_aceptar_buscador_maquinas{
+  	margin: 14% 0 !important;
+  }
+  
+  #boton_aceptar_buscador_gasoil{
+  	margin-top: 9% !important;
+  }
+  
+  .salones_cajeros{
+  	width: 49% !important;
+  	margin-left: 1% !important;
+  }
+  
+  table:not(.jsgrid-table):not(.mceToolbar) tr th, table:not(.jsgrid-table):not(.mceToolbar) tr td{
+		width: 10%;
+		font-size: 14px;
+	}
+	
+	.iconos_mantenimiento{
+		width: 15% !important;
+	}
+	
+	#div_mantenimientos_centrar{
+		padding: 0 20%;
+	}
+	
+	#div_deposito{
+		width: 20%;
+	}
+	
+	ul.navbar-nav{
+		float: none !important;
+	}
+	
+	#gasoil img{
+		width: 18px !important;
+	}
+	
+	.nav>li>a>span.badge{
+		float: right;
+    margin-left: 5px;
+	}
+	
+	#imagen_error{
+		width: 50%;
+	}
+	
+	.testear_div{
+		margin-top: 35px;
+	}
+
+	#div_regiones{
+		display: block;
+	}
+} 
+
+/* Estilo General */
+
+.container-fluid h3:first-child{
+	margin-top: 70px !important;
+}
+
+.logo_a{
+	padding-top: 5px;
+}
+
+.nav>li{
+	height: 50px;
+  text-align: right;
+}
+
+.select2-results__options {
+   max-height: 500px !important;
+}
+
+.select2-container .select2-selection--single{
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+	line-height: 34px !important;
+}
+
+/* LOGIN */
+.div_logo{
+	text-align: center;	
+}
+
+.estilo_propio_logo{
+	width: 40%;
+	margin: 3% 0;
+}
+
+.login-panel{
+	margin: 0 10%;
+}
+
+.login-input{
+	margin: 2% 20%;
+}
+
+.login-cuerpo{
+	text-align: center;
+}
+
+.logo_enlace_main{
+	margin-left: 0 !important;
+}
+
+.navbar-nav li a{
+	color: #fff !important;
+}
+
+/* Nueva incidencia */
+
+.paneles_form{
+	border: none;
+	padding: 5px;
+}
+
+.panel-heading{
+	font-weight: bold
+}
+
+.panel-body{
+	border: 1px solid transparent;
+	border-top: 0;
+  border-color: #ddd;
+  padding: 0;
+}
+
+.inputs{
+	padding: 10px 10px 0 10px;
+}
+
+.panel-body .col-md-4{
+	height: 80px;
+}
+
+.input-group{
+	width: 100%
+}
+
+.solucionada{
+	margin-top: 3%;
+}
+
+#solucionada{
+	vertical-align: sub;
+	width: 10%;
+}
+
+.ui-combobox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.ui-combobox-button {
+    display: none;
+}
+
+.ui-autocomplete-input {
+    margin: 0;
+    padding: 0.3em;
+    height: 34px;
+    width: 100%;
+    background: #fff !important;
+}
+
+.col-md-4 {
+    height: 100px;
+}
+
+/* Gestión incidencias */
+
+#ocultar_buscador:hover{
+	background: #f2f6fa;
+}
+
+#tabla_incidencias tr.clickable-row{
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  color: #000;
+  cursor: pointer;
+}
+
+#tabla_incidencias tr.clickable-row:hover{
+	background: #f2f6fa;
+}
+
+.tabla_agrupados tr.clickable-row2{
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  color: #000;
+  cursor: pointer;
+}
+
+.tabla_agrupados tr.clickable-row2:hover{
+	background: #f2f6fa;
+}
+
+.buscador_incidencias{
+	padding: 0;
+  margin-bottom: 2%;
+  float: left;
+}
+
+.tipo_error{
+	vertical-align: sub;
+	width: 10%;
+}
+
+div.input-group span.select2{
+	width: 100% !important;
+}
+
+.active_tabs>a{
+	color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd !important;
+    border-bottom-color: transparent !important;
+}
+
+.disabled_link{
+	color: currentColor;
+	cursor: not-allowed;
+  	opacity: 0.5;
+  	text-decoration: none;
+  	pointer-events: none;
+}
+
+/* Máquinas */
+
+.active>a{
+	background: #d80039 !important;
+	border-color: #d80039 !important;
+}
+
+/* Cajeros */
+
+.salones_cajeros:hover{
+	color: #fff;
+  background: #bbb;
+}
+
+table.azularqueo {
+	border-width: 2px;
+	border-spacing: 5px;
+	border-style: solid;
+	border-color: black;
+	border-collapse: collapse;
+	background-color: rgb(123, 158, 220);
+}
+
+table.azularqueo th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: rgb(47, 67, 104);
+	background-color: rgb(123, 158, 220);
+	-moz-border-radius: ;
+}
+
+table.azularqueo td {
+	border-width: 0.5px;
+	padding: 1px;
+	border-style: solid;
+	border-color: black;
+	background-color: #4682b4;
+	-moz-border-radius: ;
+}
+
+table.azul {
+	border-width: 3px;
+	border-spacing: 5px;
+	border-style: dashed;
+	border-color: blue;
+	border-collapse: collapse;
+	background-color: rgb(123, 158, 220);
+}
+
+table.azul th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: rgb(47, 67, 104);
+	background-color: rgb(123, 158, 220);
+	-moz-border-radius: ;
+}
+
+table.azul td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: rgb(47, 67, 104);
+	background-color: rgb(123, 158, 220);
+	-moz-border-radius: ;
+}
+
+table.verde {
+	border-width: 3px;
+	border-spacing: 5px;
+	border-style: dashed;
+	border-color: green;
+	border-collapse: collapse;
+	background-color: rgb(201, 255, 201);
+}
+
+table.verde th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: rgb(55, 98, 55);
+	background-color: rgb(201, 255, 201);
+	-moz-border-radius: ;
+}
+
+table.verde td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: rgb(55, 98, 55);
+	background-color: rgb(201, 255, 201);
+	-moz-border-radius: ;
+}
+
+table.rojo {
+	border-width: 3px;
+	border-spacing: 5px;
+	border-style: dashed;
+	border-color: red;
+	border-collapse: collapse;
+	background-color: #f09191;
+}
+
+table.rojo th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: #b91010;
+	background-color: #f09191;
+	-moz-border-radius: ;
+}
+
+table.rojo td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: #b91010;
+	background-color: #f09191;
+	-moz-border-radius: ;
+}
+
+table.negro {
+	border-width: 3px;
+	border-spacing: 5px;
+	border-style: dashed;
+	border-color: #1d1b1b;
+	border-collapse: collapse;
+	background-color: #c7c7c7;
+}
+
+table.negro th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: #363636;
+	background-color: #c7c7c7;
+	-moz-border-radius: ;
+}
+
+table.negro td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: dashed;
+	border-color: #363636;
+	background-color: #c7c7c7;
+	-moz-border-radius: ;
+}
+
+hr.blanco {
+	color: white;
+	background-color: white;
+	height : 1px;
+}
+
+/* Gasoil */
+
+#gasoil_form{
+	float: left;
+  width: 100%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,296 @@
+/* Script nueva_incidencia.php */
+$('#empresa').on('change',function(){
+	if($(this).val() == ''){
+		$('#gestion_tipo').html("<option value=''>Tipo gestión...</option>");
+		$('#gestion_tipo').prop('disabled', 'disabled');
+		$('#error_maquina').html("<option value=''>Máquina...</option>");
+		$('#error_maquina').prop('disabled', 'disabled');
+		$('#salon').html("<option value=''>Salón...</option>");
+		$('#salon').prop('disabled', 'disabled');
+		$('#operador').html("<option value=''>Operadora</option>");
+		$('#operador').prop('disabled', 'disabled');
+	}else{
+		$('#operador').prop('disabled', false);
+		$('#gestion_tipo').prop('disabled', false);
+		id_empresa = $(this).val();
+		$.ajax ({
+				type: "POST",
+        url: "http://10.0.0.16/tickets/get_gestion_empresa",
+        data: "id=" + id_empresa,
+        success: function(data){
+        	$('#gestion_tipo').html(data);
+        }
+		});
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_operadoras_empresa",
+        data: "id=" + id_empresa,
+        success: function(data){
+        	$('#operador').html(data);
+        },
+        complete: function (data) {
+	 				id_op =  $('#operador').val();
+	 				if(id_op == ''){
+	 					$('#salon').html("<option value=''>Salón...</option>");
+						$('#salon').prop('disabled', 'disabled');
+	 				}else{
+	 					$('#salon').prop('disabled', false);
+	 					$.ajax ({
+				        type: "POST",
+				        url: "http://10.0.0.16/tickets/get_salones_operadora",
+				        data: "id=" + id_op,
+				        success: function(data){
+				        	$('#salon').html(data);
+				        }
+				    });
+	 				}    
+	      }
+    });
+	}
+});
+
+$('#salon').on('change',function(){
+	if($(this).val() == ''){
+		//$('#operador').html("<option value=''>Operadora</option>");
+		//$('#operador').prop('disabled', 'disabled');
+		$('#error_maquina').html("<option value=''>Máquina...</option>");
+		$('#error_maquina').prop('disabled', 'disabled');
+	}else{
+		//$('#operador').prop('disabled', false);
+		id_salon = $(this).val();
+		tipo_gestion = $('#gestion_tipo').val();
+		if(tipo_gestion != ''){
+			$('#error_maquina').prop('disabled', false);
+		}
+		$('#trata_destino').prop('disabled', false);
+		if(tipo_gestion == ''){
+			tipo_gestion = 3;
+		}
+		/*
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_salones_ajax",
+        data: "id=" + id_salon,
+        success: function(data){
+        	$('#operador').html(data);
+        }
+    });
+    */
+    $.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_maquinas",
+        data: "id=" + id_salon + "&g=" + tipo_gestion,
+        success: function(data){
+        	$('#error_maquina').html(data);
+        }
+    });
+    $.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_cliente",
+        data: "id=" + id_salon,
+        success: function(data){
+        	var res = data.split("|");
+        	$('#cliente_telefono').val(res[1]);
+        }
+    });
+    $.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_departamentos_ajax",
+        data: "id=" + id_salon,
+        success: function(data){
+        	$('#trata_destino').html(data);
+        }
+    });
+	}
+});
+
+$('#gestion_tipo').on('change', function(){
+	if($(this).val() == ''){
+		$('#error_maquina').html("<option value=''>Máquina...</option>");
+		$('#error_maquina').prop('disabled', 'disabled');
+	}else{
+		id_salon = $('#salon').val();
+		tipo_gestion = $(this).val();
+		$('#error_maquina').prop('disabled', false);
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_maquinas",
+        data: "id=" + id_salon + "&g=" + tipo_gestion,
+        success: function(data){
+        	$('#error_maquina').html(data);
+        }
+    });
+	}
+});
+
+/*
+$('#cliente_tipo').on('change', function(){
+	if($(this).val() == 5){
+		$('#id_web_div').css('display', 'block');
+	}else{
+		$('#id_web_div').css('display', 'none');
+		$('#cliente_nombre').val('');
+		$('#cliente_email').val('');
+	}
+});
+*/
+/*
+$('#id_web').focusout(function(){
+		if($(this).val() == ''){
+			$('#cliente_nombre').val('');
+			$('#cliente_email').val('');
+		}else{
+			id_web = $(this).val();
+			$.ajax ({
+	        type: "POST",
+	        url: "http://10.0.0.16/tickets/get_id_web",
+	        data: "id=" + id_web,
+	        dataType: "json",
+	        success: function(data){
+	        	$('#cliente_nombre').val(data[0]);
+						$('#cliente_email').val(data[1]);
+	        }
+	    });	
+		}
+});
+*/
+
+$('#cliente_tipo').on('change', function(){
+	if($(this).val() == ''){
+		$('#cliente_nombre').val('');
+		$('#cliente_email').val('');
+	}else if($(this).val() != 1 && $(this).val() != 5){
+		id_cliente = $(this).val();
+		id_salon = $('#salon').val();
+		id_op = $('#operador').val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_datos_cliente",
+        data: "cliente=" + id_cliente + "&op=" + id_op + "&salon=" + id_salon,
+        success: function(data){
+        	var res = data.split("|");       	
+        	$('#cliente_nombre').val(res[1]);
+        	$('#cliente_email').val(res[2]);
+        }
+    });
+	}	
+});
+
+$('#error_maquina').on('change',function(){
+	if($(this).val() == ''){
+		$('#error_tipo').html("<option value=''>Tipo error...</option>");
+		$('#error_tipo').prop('disabled', 'disabled');
+		$('#error_detalle').html("<option value=''>Detalle error...</option>");
+		$('#error_detalle').prop('disabled', 'disabled');
+	}else{
+		$('#error_tipo').prop('disabled',false);
+		id_maquina = $(this).val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_error_maquina",
+        data: "id=" + id_maquina,
+        success: function(data){
+        	$('#error_tipo').html(data);
+        }
+    });
+	}
+});
+
+
+$('#error_tipo').on('change',function(){
+	if($(this).val() == ''){
+		$('#error_detalle').prop('disabled', 'disabled');
+	}else{
+		$('#error_detalle').prop('disabled', false);
+		id_error = $(this).val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_error_detalle",
+        data: "id=" + id_error,
+        success: function(data){
+        	$('#error_detalle').html(data);
+        }
+    });
+	}
+});
+
+$('#situacion').on('change',function(){
+	if($(this).val() == 2){
+		$('#trata_desc').html('*SAT');
+	}else{
+    $('#trata_desc').html('');
+	}
+});
+
+$('.panel-heading').on('click',function(){
+	if($(this).attr('class') == 'panel-heading'){
+		if($(this).next().attr('class') == 'panel-body'){
+			if($(this).next().css('display') == 'block'){
+				$(this).children().attr('class', 'glyphicon glyphicon-triangle-bottom');
+				$(this).next().css('display','none');
+			}else{
+				$(this).children().attr('class', 'glyphicon glyphicon-triangle-top');
+				$(this).next().css('display','block');
+			}
+		}
+	}
+});
+
+$(function(){
+	if($('#panel_historial').height() > 300){
+		console.log('ok');
+		$('#panel_historial').css('overflow', 'scroll');
+		$('#panel_historial').height(300);
+	};
+});
+
+/* Nueva máquina */
+
+$('#link_nueva_maquina').on('click', function(e){
+	e.preventDefault();
+	$('#nueva_maquina').css('display', 'block');
+	var scroll = $(window).scrollTop();
+	$('#nueva_maquina').css('top', scroll);
+});
+
+$('#fabri_nueva_maquina').on('change',function(){
+	if($(this).val() == ''){
+		$('#modelo_nueva_maquina').html("<option value=''>Modelo...</option>");
+		$('#modelo_nueva_maquina').prop('disabled', 'disabled');
+	}else{
+		$('#modelo_nueva_maquina').prop('disabled', false);
+		id_fabri = $(this).val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_modelos",
+        data: "id=" + id_fabri,
+        success: function(data){
+        	$('#modelo_nueva_maquina').html(data);
+        }
+    });
+	}
+});
+
+$('#nueva_maquina_button').on('click', function(e){
+	e.preventDefault();
+	$.ajax ({
+      type: "POST",
+      url: "http://10.0.0.16/tickets/nueva_maquina_form_ajax",
+      data: { salon : $('#salon_nueva_maquina').val(), fabri : $('#fabri_nueva_maquina').val(), modelo : $('#modelo_nueva_maquina').val(), maquina : $('#maquina_nueva_maquina').val(),},
+      success: function(data){
+      	$('#nueva_maquina').css('display', 'none');
+      },
+      complete: function (data){
+      	id_salon = $('#salon').val();
+				tipo_gestion = $('#gestion_tipo').val();
+      	$.ajax ({
+		        type: "POST",
+		        url: "http://10.0.0.16/tickets/get_maquinas",
+		        data: "id=" + id_salon + "&g=" + tipo_gestion,
+		        success: function(data){
+		        	$('#error_maquina').html(data);
+		        }
+		    });
+	 		}
+  });
+})

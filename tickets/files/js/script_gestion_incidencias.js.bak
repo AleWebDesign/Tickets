@@ -1,0 +1,55 @@
+/* Script gestion_incidencias.php */
+$(function(){
+	if($('input:checkbox:checked').length == $('input:checkbox').length){
+		$('.check_all').html('Desmarcar todos');
+	}
+});
+
+$('#salon').on('change',function(){
+	if($(this).val() == ''){
+		$('#operador').html("<option value=''>Operadora</option>");
+		$('#operador').prop('disabled', 'disabled');
+	}else{
+		$('#operador').prop('disabled', false);
+		id_salon = $(this).val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_salones_ajax",
+        data: "id=" + id_salon,
+        success: function(data){
+        	$('#operador').html(data);
+        }
+    });
+	}
+});
+
+$(".clickable-row").click(function(){
+	window.open($(this).data("href"));
+});
+
+$('.check_all').click(function(e){
+	e.preventDefault();
+	if($(this).html() == "Marcar todos"){
+		$('input:checkbox').prop('checked',true);
+		$(this).html('Desmarcar todos');
+	}else{
+		$('input:checkbox').prop('checked',false);
+		$(this).html('Marcar todos');
+	}
+});
+
+$('#ocultar_buscador').click(function(e){
+	e.preventDefault();
+	if($('#ocultar').css('display') == "none"){
+		$('#ocultar_buscador').children().children().attr('class', 'glyphicon glyphicon-triangle-top');
+		$('#ocultar').css('display','block');
+	}else{
+		$('#ocultar_buscador').children().children().attr('class', 'glyphicon glyphicon-triangle-bottom');
+		$('#ocultar').css('display','none');
+	}
+});
+
+$(function(){
+	var scroll = parseInt(localStorage.getItem("scrollTop"));
+	alert(scroll);
+});

@@ -1,0 +1,18 @@
+/* Script crear maquinas */
+$('#fabri').on('change',function(){
+	if($(this).val() == ''){
+		$('#modelo').html("<option value=''>Modelo...</option>");
+		$('#modelo').prop('disabled', 'disabled');
+	}else{
+		$('#modelo').prop('disabled', false);
+		id_fabri = $(this).val();
+		$.ajax ({
+        type: "POST",
+        url: "http://10.0.0.16/tickets/get_modelos",
+        data: "id=" + id_fabri,
+        success: function(data){
+        	$('#error_maquina').html(data);
+        }
+    });
+	}
+});

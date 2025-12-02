@@ -3,9 +3,9 @@
 $config['useragent']        = 'CodeIgniter';              // Mail engine switcher: 'CodeIgniter' or 'PHPMailer'
 $config['protocol']         = 'mail';                   // 'mail', 'sendmail', or 'smtp'
 $config['mailpath']         = '/usr/sbin/sendmail';
-$config['smtp_host']        = 'mail.apuestasdemurcia.es';
-$config['smtp_user']        = 'averias@apuestasdemurcia.es';
-$config['smtp_pass']        = 'tIz_f486';
+$config['smtp_host']        = '';
+$config['smtp_user']        = '';
+$config['smtp_pass']        = '';
 $config['smtp_port']        = 465;
 $config['smtp_timeout']     = 30;                       // (in seconds)
 $config['smtp_crypto']      = 'ssl';                       // '' or 'tls' or 'ssl'

@@ -37,8 +37,8 @@ function myDash($scope, $mdToast, $http, $interval, $cookies) {
         var auth_obj = {
             "method": "login", "params": {
                 "appType": "Tapo_Ios",
-                "cloudUserName": "informatica@apuestasdemurcia.es",
-                "cloudPassword": "Adm2023inf?",
+                "cloudUserName": "",
+                "cloudPassword": "",
                 "terminalUUID": $scope.tpl.UUID
             }
         };

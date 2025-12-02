@@ -519,27 +519,6 @@ class Tickets extends CI_Controller {
 		$this->load->library('tipster');
 		$this->tipster->nueva_incidencia($id,$ticket,$titulo,$body);
 	}
-
-	public function pruebas_telegram(){
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
-		$chat_id='-4932272884';
-		$API="https://api.telegram.org/bot".$Token;
-		$url=$API."/sendMessage?chat_id=".$chat_id;
-		
-		$body = "";		
-		$body .= "Prueba" . "\n";
-
-		if($chat_id != ''){
-			$data = [
-			    'text' => $body,
-			    'chat_id' => $chat_id,
-			    'parse_mode' => 'markdown'
-			];
-			$ejecutar = $this->http_request("https://api.telegram.org/bot$Token/sendMessage?" . http_build_query($data) );
-			$result = json_decode($ejecutar,true);
-			var_dump($result);			
-		}
-	}
 	
 	public function telegram($id){
 		
@@ -580,30 +559,14 @@ class Tickets extends CI_Controller {
 			$ticket_manual = $this->post->get_ticket_manual($id);
 		}
 		
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
+		$Token='';
 		$chat_id=$op2->chat_telegram_id;
 		$API="https://api.telegram.org/bot".$Token;
 		$url=$API."/sendMessage?chat_id=".$chat_id;
 		
 		$sat_op = "";
 		if(in_array($this->session->userdata('logged_in')['id'], $usuarios_adm)){
-			if($ticket->destino == 32 || $ticket->situacion == 14){
-				$chat_id="-1001422012811";
-			}else if($ticket->situacion == 3){
-				$chat_id="-2045930";
-			}else if($ticket->destino == 2 || $ticket->situacion == 12){
-				$chat_id="-4577120300";
-			}else if($ticket->destino == 31 || $ticket->situacion == 19){
-				$chat_id="-971495944";
-			}else if($ticket->destino == 261 || $ticket->situacion == 21){
-				$chat_id="-4932272884";
-			}else if($salon->empresa == 2){
-				$chat_id = '-1001291962255';
-			}else if($salon->empresa == 3){
-				$chat_id = '-1001359299397';
-			}else{
-				$chat_id = '-1001158004617';
-			}
+			$chat_id = '';
 			if(($ticket->destino != 2 && $ticket->destino != 4 && $ticket->destino != 31 && $ticket->destino != 32) || $ticket->situacion == 13){
 				$sat_op = "*"."DESTINO SAT OPERADORA"."*"."\n";
 			}else{
@@ -740,7 +703,7 @@ class Tickets extends CI_Controller {
 		$usuario = $this->post->get_creador_completo($this->session->userdata('logged_in')['id']);
 		$usuarios_adm = $this->post->get_usuarios_adm();
 		
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
+		$Token='';
 		$chat_id=$op2->chat_telegram_id;
 		$API="https://api.telegram.org/bot".$Token;
 		$url=$API."/sendMessage?chat_id=".$chat_id;
@@ -748,23 +711,7 @@ class Tickets extends CI_Controller {
 		$replyid = $ticket->chatid;
 		
 		if(in_array($this->session->userdata('logged_in')['id'], $usuarios_adm)){
-			if($ticket->destino == 32 || $ticket->situacion == 14){
-				$chat_id="-1001422012811";
-			}else if($ticket->destino == 1 || $ticket->situacion == 3){
-				$chat_id="-2045930";
-			}else if($ticket->destino == 2 || $ticket->situacion == 12){
-				$chat_id="-4577120300";
-			}else if($ticket->destino == 31 || $ticket->situacion == 19){
-				$chat_id="-971495944";
-			}else if($ticket->destino == 261 || $ticket->situacion == 21){
-				$chat_id="-4932272884";
-			}else if($salon->empresa == 2){
-				$chat_id = '-1001291962255';
-			}else	if($salon->empresa == 3){
-				$chat_id = '-1001359299397';
-			}else{
-				$chat_id = '-1001158004617';
-			}
+			$chat_id = '';
 			if($ticket->destino != 2 && $ticket->destino != 4 && $ticket->destino != 31 && $ticket->destino != 32){
 				$sat_op = "*"."DESTINO SAT OPERADORA"."*"."\n";
 			}else{
@@ -930,7 +877,7 @@ class Tickets extends CI_Controller {
 		$usuario = $this->post->get_creador_completo($ticket->asignado);
 		$usuarios_adm = $this->post->get_usuarios_adm();
 		
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
+		$Token='';
 		$chat_id=$op2->chat_telegram_id;
 		$API="https://api.telegram.org/bot".$Token;
 		$url=$API."/sendMessage?chat_id=".$chat_id;
@@ -942,23 +889,7 @@ class Tickets extends CI_Controller {
 		$body .= " en camino" . "\n";
 		
 		if(in_array($this->session->userdata('logged_in')['id'], $usuarios_adm)){
-			if($ticket->destino == 32 || $ticket->situacion == 14){
-				$chat_id="-1001422012811";
-			}else if($ticket->situacion == 3){
-				$chat_id="-2045930";
-			}else if($ticket->destino == 2 || $ticket->situacion == 12){
-				$chat_id="-4577120300";
-			}else if($ticket->destino == 31 || $ticket->situacion == 19){
-				$chat_id="-971495944";
-			}else if($ticket->destino == 261 || $ticket->situacion == 21){
-				$chat_id="-4932272884";
-			}else if($salon->empresa == 2){
-				$chat_id = '-1001291962255';
-			}else if($salon->empresa == 3){
-				$chat_id = '-1001359299397';
-			}else{
-				$chat_id = '-1001158004617';
-			}
+			$chat_id = '';
 			if($ticket->destino != 2 && $ticket->destino != 4 && $ticket->destino != 31 && $ticket->destino != 32){
 				$sat_op = "*"."DESTINO SAT OPERADORA"."*"."\n";
 			}else{
@@ -995,8 +926,8 @@ class Tickets extends CI_Controller {
 		
 		/* Get usuario */
 		$usuario = $this->post->get_last_user();
-		$Token = '1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
-		$chat_id=-293641424;
+		$Token = '';
+		$chat_id='';
 		
 		if($usuario->telefono != ''){
 			
@@ -1038,7 +969,7 @@ class Tickets extends CI_Controller {
 		}
 		$usuarios_adm = $this->post->get_usuarios_adm();
 		
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
+		$Token='';
 		$chat_id=$op2->chat_telegram_id;
 		$API="https://api.telegram.org/bot".$Token;
 		$url=$API."/sendMessage?chat_id=".$chat_id;
@@ -1145,8 +1076,8 @@ class Tickets extends CI_Controller {
 			$ticket_manual = $this->post->get_ticket_manual($id);
 		}
 		
-		$Token='1684937498:AAHbqAqAwYIljLiVE8d0Dk7PiHjtb-RcYug';
-		$chat_id = '-1001158004617';
+		$Token='';
+		$chat_id = '';
 		$API="https://api.telegram.org/bot".$Token;
 		$url=$API."/sendMessage?chat_id=".$chat_id;
 		

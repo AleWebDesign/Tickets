@@ -6,10 +6,10 @@ class Tipster {
 	function nueva_incidencia($id,$ticket,$titulo,$body){
 		
 		// Datos db
-		$usuario = "tipster";
-		$clave = "Fgwe3&38";
-		$database = "tipster";
-	    $port = 3306;
+		$usuario = "";
+		$clave = "";
+		$database = "";
+	    $port = ;
 	  
 	    try{	
 		  $conn = new PDO('mysql:host=atc.apuestasdemurcia.es;dbname=tipster; charset=utf8', $usuario, $clave);
@@ -18,8 +18,8 @@ class Tipster {
 		  echo "ERROR: " . $e->getMessage();
 		}
 		
-		$usuario2='atc_user';
-		$clave2='#Gnh1j38';
+		$usuario2='';
+		$clave2='';
 
 		try{			
 		  $conn2 = new PDO('mysql:host=atc.apuestasdemurcia.es;dbname=averias; charset=utf8', $usuario2, $clave2);
@@ -114,7 +114,7 @@ class Tipster {
 			    ];
 		    }
 
-		    $token_firebase = 'AAAA8Ju9bpE:APA91bFGXXYGXsbakZoeCjkEGUCAygZYOUIRZQ3YK1suNDJdsEHsnawMPEs38aULrT0h9z--T3la_9caIw9GtzmPPgxOpBdaF4rjBW7Btk2ui9-x7Md7NKkpNPon4q3p9vbwJ21Dwa0c';
+		    $token_firebase = '';
 		    $url = 'https://fcm.googleapis.com/fcm/send';
 		    $headers = array(
 		        'Authorization: key='.$token_firebase,
@@ -131,7 +131,7 @@ class Tipster {
 		    $result = curl_exec($ch);
 		    curl_close($ch);
 
-		    $token_firebase = 'AAAAHsepOWw:APA91bGt6mLTi4J4AMrkjyMmGF6Qg9B0W3BQJgvfozapKzTMAuwuwTb-KdbJsdn0J47mRJuXZwdDZtudZyG9ySOQqGvodu3uM3zB2EKk7DDGYcRae6-6tc7yTcJriApRIV3d3UKm-V7l';
+		    $token_firebase = '';
 	    	$url = 'https://fcm.googleapis.com/fcm/send';
 	        $headers = array(
 	            'Authorization: key='.$token_firebase,

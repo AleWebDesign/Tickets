@@ -2,8 +2,8 @@
 
 error_reporting(1);
 
-$Token='461267759:AAHUGrJrPjrxoUX2Z3FmUl9oPFHRHXviXzQ';
-$chat_id=-268371226;
+$Token='';
+$chat_id='';
 $API="https://api.telegram.org/bot".$Token;
 $url=$API."/sendMessage?chat_id=".$chat_id;
 

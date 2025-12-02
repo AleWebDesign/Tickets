@@ -1,0 +1,1 @@
+Professional ticketing application for a company. It allows the resolution of incidents or breakdowns between a customer service and a technical support department. It was developed using CodeIgniter PHP framework and JavaScript.
